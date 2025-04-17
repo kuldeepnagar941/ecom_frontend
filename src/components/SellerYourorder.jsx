@@ -13,7 +13,7 @@ function SellerYourOrder() {
                 const response = await axios.get(`http://localhost:4000/sellerorder/getsellerorder/${userId}`);
                 if (response.data && Array.isArray(response.data.order)) {
                     setOrders(response.data.order);
-                    // console.log(orders);
+                     console.log(orders);
                 } else {
                     console.error(" array :", response.data);
                     setOrders([]);
@@ -96,4 +96,9 @@ function SellerYourOrder() {
     );
 }
 
+
+
+
 export default SellerYourOrder;
+
+

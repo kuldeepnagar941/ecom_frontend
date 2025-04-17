@@ -11,6 +11,7 @@ const ProductForm = () => {
     const [price, setPrice] = useState("");
     const [size, setSize] = useState("");
     const [colour, setColour] = useState("");
+    const [quantity, setQuantity] = useState("");
     const [description, setDescription] = useState("");
     const [message, setMessage] = useState("");
 
@@ -24,7 +25,9 @@ const ProductForm = () => {
             title,
             price,
             size,
-            colour, 
+            colour,
+            quantity,
+
             description,
             sellerId:userId
         };
@@ -42,6 +45,7 @@ const ProductForm = () => {
             setSize("");
             setColour("");
             setDescription("");
+            setQuantity("");
         } catch (error) {
             console.error("Error submitting product:", error);
             setMessage("Failed to add product.");
@@ -77,6 +81,11 @@ const ProductForm = () => {
                 <div className="mb-3">
                     <label className="form-label">Colours </label>
                     <input type="text" className="form-control" value={colour} onChange={(e) => setColour(e.target.value)}  required />
+                </div>
+
+                <div className="mb-3">
+                    <label className="form-label">Quantity </label>
+                    <input type="text" className="form-control" value={quantity} onChange={(e) => setQuantity(e.target.value)}  required />
                 </div>
 
                 <div className="mb-3">

@@ -17,7 +17,7 @@ const ProductCard = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get("http://localhost:4000/products");
+                const response = await axios.get("http://localhost:4000/products/allproduct");
                 setProducts(response.data);
                 console.log(response)
                 setLoading(false);

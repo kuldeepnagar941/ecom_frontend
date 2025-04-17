@@ -24,9 +24,11 @@ const ProductCard = () => {
         fetchProducts();
     }, []);
 
+    const userid = localStorage.getItem("userid");
+
     const fetchProducts = async () => {
         try {
-            const response = await axios.get("http://localhost:4000/products");
+            const response = await axios.get(`http://localhost:4000/products/getuserproduct/${userid}`);
             setProducts(response.data);
             setLoading(false);
         } catch (err) {

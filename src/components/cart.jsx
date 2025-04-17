@@ -73,55 +73,47 @@ const Cart = () => {
             alert("Please select an address");
             return;
         }
-        
-        try {
-            const userOrderResponse = await axios.post("http://localhost:4000/userorder", {
-                userId: userid,
-                cartId: cart._id,
-                addressId: selectedAddress,
-                paymentMode,
-            });
-        
-            console.log("User Order API Res:", userOrderResponse.data); 
-            const userOrderId = userOrderResponse.data?.order?._id;
-            
-            if (userOrderId && userid) {
-                order(userid, userOrderId); 
-            }
-            setShowModal(false);
-            fetchCart();
-        } catch (err) {
-            console.error("Error placing order:", err);
-        }
-        
+
+        await order(userid);
+        setShowModal(false);
+        fetchCart();
     };
 
-    const order = async (userid, userOrderId) => {
+    const order = async (userid) => {
+        if (!cart || !cart.items || cart.items.length === 0) {
+            alert("Cart is empty or invalid");
+            return;
+        }
+
         try {
-            const sellerOrderPromises = cart.items.map((item) => {
+            for (const item of cart.items) {
                 const requestData = {
-                    sellerId: item.product.sellerId, 
+                    sellerId: item.product.sellerId,
                     productId: item.product._id,
                     addressId: selectedAddress,
-                    status: "initinate",
-                    userOrderId,
+                    quantity: item.quantity,
+                    status: "initiate",
                     userId: userid,
-                    payment_mode:paymentMode
+                    payment_mode: paymentMode
                 };
-    
-                console.log("Sending request to /sellerorder with data:", requestData); 
-    
-                return axios.post("http://localhost:4000/sellerorder", requestData);
-            });
-    
-            await Promise.all(sellerOrderPromises); 
-            console.log(" All seller orders placed successfully!");
+
+                const response = await axios.post("http://localhost:4000/sellerorder", requestData);
+
+                if (response.data.success === false) {
+                    console.error("Seller order error:", response.data.message);
+                    alert(response.data.message);
+                    return;
+                } else {
+                    console.log("Seller order placed:", response.data.message);
+                }
+            }
+
+            alert("All seller orders placed successfully!");
         } catch (error) {
-            console.error(" Error placing seller orders:", error.response?.data || error.message);
-            alert("Failed to place seller orders. Check the console for more details.");
+            console.error("Error placing seller orders:", error.response?.data || error.message);
+            alert("An error occurred while placing your order.");
         }
     };
-    
     
     return (
         <div className="container mt-4">

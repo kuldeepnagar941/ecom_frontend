@@ -29,11 +29,11 @@ const Login = () => {
 
       if (response.status === 200 && role ==="seller") {
         alert("Login successful!");
-        navigate("/sellershowproduct")
+        navigate("/sellersidebar")
           
 
       }else{
-        navigate("/showproduct")
+        navigate("/")
       }
     } catch (error) {
       alert(error.response?.data?.message || "Invalid email or password!");

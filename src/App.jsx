@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import SellerSidebar from "./components/SellerSidebar";
 import Signup from "./components/Usersignup";
 import SellerSignup from "./components/SellerSignup";
 import Userlogin from "./components/Userlogin"
@@ -11,6 +13,8 @@ import Createaddress from './components/createAddress'
 import Showaddress from './components/showAddress'
 import YourOrderuser from "./components/yourOrderuser";
 import SellerYourorder from "./components/SellerYourorder";
+import ProductQunatity from "./components/ProductQunatity";
+import Deshboard from './components/Deshboard'
 
 
 
@@ -22,7 +26,9 @@ const role = localStorage.getItem("role")
     <Router>
       <Routes>
         
-        <Route path="/" element={<Userlogin />} />
+        <Route path="/" element={<Sidebar />} />
+        <Route path="/sellersidebar" element={<SellerSidebar />} />
+        <Route path="/login" element={<Userlogin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/sellersignup" element={<SellerSignup />} />
         <Route path="/addproduct" element={<Addproduct />} />
@@ -35,6 +41,8 @@ const role = localStorage.getItem("role")
         <Route path ="/showaddress" element={ <Showaddress/> } />
         <Route path='/yourorderuser' element={<YourOrderuser/>} />
         <Route path='/yourorderseller' element={<SellerYourorder/>} />
+        <Route path='/productQunatity' element={<ProductQunatity/>} />
+        <Route path='/deshboard' element={<Deshboard/>} />
         
       </Routes>
     </Router>
