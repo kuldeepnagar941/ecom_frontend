@@ -14,7 +14,12 @@ import Showaddress from './components/showAddress'
 import YourOrderuser from "./components/yourOrderuser";
 import SellerYourorder from "./components/SellerYourorder";
 import ProductQunatity from "./components/ProductQunatity";
-import Deshboard from './components/Deshboard'
+
+
+import Deshboard from './components/Admin/Deshboard'
+import GetAllUser from "./components/Admin/GetAllUser";
+import GetAllSeller from "./components/Admin/GetAllSeller";
+
 
 
 
@@ -43,6 +48,11 @@ const role = localStorage.getItem("role")
         <Route path='/yourorderseller' element={<SellerYourorder/>} />
         <Route path='/productQunatity' element={<ProductQunatity/>} />
         <Route path='/deshboard' element={<Deshboard/>} />
+
+        <Route path="/getalluseradmin" element={<GetAllUser/>} />
+        <Route path="/getallselleradmin" element={<GetAllSeller/>} />
+
+
         
       </Routes>
     </Router>
