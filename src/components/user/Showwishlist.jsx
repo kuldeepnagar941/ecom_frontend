@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
 
 const Wishlist = () => {
     const navigate = useNavigate();
@@ -32,9 +34,13 @@ const Wishlist = () => {
     };
 
     return (
+        <>
+            <Header />
+            <div className='d-flex'>
+                <Sidebar />
         <div className="container mt-4">
             <h2 className="text-center mb-4">My Wishlist</h2>
-            <button className="btn btn-primary" onClick={() => navigate("/showproduct")}>Back to Products</button>
+            {/* <button className="btn btn-primary" onClick={() => navigate("/showproduct")}>Back to Products</button> */}
 
             <div className="row">
                 {wishlist.length > 0 ? wishlist.map((product) => (
@@ -51,6 +57,8 @@ const Wishlist = () => {
                 )) : <p className="text-center">Your wishlist is empty.</p>}
             </div>
         </div>
+     </div>
+    </>
     );
 };
 

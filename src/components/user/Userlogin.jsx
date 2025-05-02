@@ -20,16 +20,18 @@ const Login = () => {
       const role = response.data.User.role;
       const token =response.data.token
       const userid = response.data.User._id
+      const name =response.data.User.name
       console.log(response.data.User._id)
       localStorage.setItem("token",token);
       localStorage.setItem("role", role);
       localStorage.setItem("userid",userid)
+      localStorage.setItem("name",name)
 
       
 
       if (response.status === 200 && role ==="seller") {
         alert("Login successful!");
-        navigate("/sellersidebar")
+        navigate("/sellershowproduct")
           
 
       }else{

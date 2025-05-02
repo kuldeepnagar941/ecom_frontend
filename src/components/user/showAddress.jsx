@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import Header from './Header';
+import Sidebar from './Sidebar';
 
 const AddressList = () => {
     const [addresses, setAddresses] = useState([]);
@@ -51,6 +53,10 @@ const AddressList = () => {
     };
 
     return (
+        <>
+            <Header />
+            <div className='d-flex'>
+                <Sidebar />
         <div className="container mt-3">
             <h4>Saved Addresses</h4>
             {addresses.length === 0 ? (
@@ -92,7 +98,10 @@ const AddressList = () => {
                     ))}
                 </div>
             )}
+            <button className="btn btn-primary mt-3" onClick={() => window.location.href = "/addaddress"}>Add New Address</button>
         </div>
+        </div>
+        </>
     );
 };
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import SellerHeader from "./SellerHeader";
+import SellerSidebar from "./SellerSidebar";
 
 const ProductForm = () => {
 
@@ -53,9 +55,14 @@ const ProductForm = () => {
     };
 
     return (
+        <>
+        <SellerHeader/>
+        <div className="d-flex">
+            <SellerSidebar/>
+
         <div className="container mt-4">
             <h2 className="text-center">Add Product</h2>
-            <button className="btn btn-success"  onClick={() => (Navigate("/sellershowproduct"))}>Show Product</button>
+            {/* <button className="btn btn-success"  onClick={() => (Navigate("/sellershowproduct"))}>Show Product</button> */}
             {message && <div className={`alert ${message.includes("Failed") ? "alert-danger" : "alert-success"}`}>{message}</div>}
             <form onSubmit={handleSubmit} className="p-4 border rounded shadow bg-light">
                 <div className="mb-3">
@@ -96,6 +103,11 @@ const ProductForm = () => {
                 <button type="submit" className="btn btn-primary w-100">Submit</button>
             </form>
         </div>
+        </div>
+        {/* <div className="footer mt-4 text-center bg-light py-3">
+            <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+        </div>   */}
+        </>
     );
 };
 

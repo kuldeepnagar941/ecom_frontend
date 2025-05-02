@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import SellerHeader from './SellerHeader';
+import SellerSidebar from './SellerSidebar';
 
 function ProductQuantity() {
   const [products, setProducts] = useState([]);
@@ -61,6 +63,10 @@ function ProductQuantity() {
   };
 
   return (
+    <>
+    <SellerHeader/>
+    <div className="d-flex">
+      <SellerSidebar/>
     <div style={{ padding: '20px' }}>
       <h2>Product Inventory</h2>
       {products.map((product) => (
@@ -105,6 +111,8 @@ function ProductQuantity() {
         </div>
       ))}
     </div>
+    </div>
+    </>
   );
 }
 

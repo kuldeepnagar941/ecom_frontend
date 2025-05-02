@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Header from './Header';
+import Sidebar from './Sidebar';
 
 function YourOrderUser() {
      const [orders, setOrders] = useState([]);
@@ -10,10 +12,10 @@ function YourOrderUser() {
         useEffect(() => {
             const fetchOrders = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:4000/sellerorder/getsellerorder/${userId}`);
+                    const response = await axios.get(`http://localhost:4000/userorder/getallorderuser/${userId}`);
                     if (response.data && Array.isArray(response.data.order)) {
                         setOrders(response.data.order);
-                        console.log(orders);
+                        console.log(response);
                     } else {
                         console.error(" array :", response.data);
                         setOrders([]);
@@ -25,7 +27,7 @@ function YourOrderUser() {
             };
     
             fetchOrders();
-        }, [userId]);
+        }, []);
     
     
     
@@ -55,8 +57,12 @@ function YourOrderUser() {
         };
     
         return (
+            <>
+                <Header />
+                <div className='d-flex'>
+                    <Sidebar />
             <div className="container mt-4">
-                <h2 className="text-center mb-4">Seller Orders</h2>
+                <h2 className="text-center mb-4">User Orders</h2>
                 <div className="row">
                     {orders.length > 0 ? (
                         orders.map((order) => (
@@ -96,6 +102,8 @@ function YourOrderUser() {
                     )}
                 </div>
             </div>
+        </div>
+        </>
         );
     }
 

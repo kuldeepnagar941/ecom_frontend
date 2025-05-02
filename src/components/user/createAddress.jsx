@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Header from './Header';
+import Sidebar from './Sidebar';
 
 const API_URL = 'http://localhost:4000/address';
 
@@ -16,7 +18,7 @@ const AddressForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        // Get userId from localStorage
+       
         const userId = localStorage.getItem("userid"); 
         console.log(userId)
         if (!userId) {
@@ -48,6 +50,12 @@ const AddressForm = () => {
     };
 
     return (
+        <>
+            <Header />
+            <div className='d-flex'>
+                <Sidebar />
+               
+          
         <div className="container mt-3">
             <h4>{editingId ? 'Edit Address' : 'Add Address'}</h4>
             <form onSubmit={handleSubmit} className="card p-3 shadow">
@@ -78,6 +86,8 @@ const AddressForm = () => {
                 <button type="submit" className="btn btn-primary">{editingId ? 'Update' : 'Submit'}</button>
             </form>
         </div>
+     </div>
+     </>
     );
 };
 
