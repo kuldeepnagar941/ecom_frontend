@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import Footer from './Footer';
 
 const AddressList = () => {
     const [addresses, setAddresses] = useState([]);
@@ -101,6 +102,7 @@ const AddressList = () => {
             <button className="btn btn-primary mt-3" onClick={() => window.location.href = "/addaddress"}>Add New Address</button>
         </div>
         </div>
+        <Footer/>
         </>
     );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import Footer from './Footer';
 
 const API_URL = 'http://localhost:4000/address';
 
@@ -87,6 +88,7 @@ const AddressForm = () => {
             </form>
         </div>
      </div>
+     <Footer/>
      </>
     );
 };

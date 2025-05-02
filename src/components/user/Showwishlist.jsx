@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import Footer from "./Footer";
 
 const Wishlist = () => {
     const navigate = useNavigate();
@@ -58,6 +59,7 @@ const Wishlist = () => {
             </div>
         </div>
      </div>
+     <Footer/>
     </>
     );
 };

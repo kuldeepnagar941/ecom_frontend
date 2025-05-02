@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import Footer from './Footer';
 
 function YourOrderUser() {
      const [orders, setOrders] = useState([]);
@@ -103,6 +104,7 @@ function YourOrderUser() {
                 </div>
             </div>
         </div>
+        <Footer/>
         </>
         );
     }

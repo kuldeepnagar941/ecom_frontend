@@ -4,6 +4,7 @@ import axios from "axios";
 import { FaHeart } from "react-icons/fa";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import Footer from "./Footer";
 
 const ProductCard = () => {
     // const navigate = useNavigate();
@@ -138,6 +139,7 @@ const ProductCard = () => {
                     )}
                 </div>
             </div>
+            <Footer />
         </>
     );
 };
